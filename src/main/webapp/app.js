@@ -1,11 +1,15 @@
 $(function () {
-    $newCard = $('<div class="card card-register mx-auto mt-5">').append($('<div class="card-header">');
-    $bookListContainer = $newCard.clone().firstElementChild.text('List of books');
-    $form = $newCard.clone().firstElementChild.text('Add new book');
-    $form.append($('<div class="card-body">').append($('<form id="contact_form">')));
-    $bookList = $("<ul id='#bookList'>");
+    var $bookList = $("<ul id='#bookList'>");
 
+    var $newCard = $('<div class="card card-register mx-auto mt-5"><div class="card-header"></div></div>');
+
+    var $bookListContainer = $newCard.clone();
+    var $form = $newCard.clone().first().text('Add new book');
+
+    //$bookListContainer.first().text('List of books');
     $bookListContainer.append($('<div class="card-body">').prepend($bookList));
+
+    $form.append($('<div class="card-body">').append($('<form id="contact_form">')));
 
     $("body").find(".container").prepend($bookListContainer);
     $("body").find(".container").append($form);

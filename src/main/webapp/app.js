@@ -4,15 +4,18 @@ $(function () {
     var $newCard = $('<div class="card card-register mx-auto mt-5"><div class="card-header"></div></div>');
 
     var $bookListContainer = $newCard.clone();
-    var $form = $newCard.clone().first().text('Add new book');
+    var $formContainer = $newCard.clone();
+    var $form = $('#contact_form');
 
-    //$bookListContainer.first().text('List of books');
+    $bookListContainer.find(".card-header").text('List of books');
     $bookListContainer.append($('<div class="card-body">').prepend($bookList));
 
-    $form.append($('<div class="card-body">').append($('<form id="contact_form">')));
+    $formContainer.find(".card-header").text('Add new book');
+    $formContainer.append($('<div class="card-body">').append($form));
+
 
     $("body").find(".container").prepend($bookListContainer);
-    $("body").find(".container").append($form);
+    $("body").find(".container").append($formContainer);
 
     getBooks();
 
@@ -56,8 +59,7 @@ $(function () {
         request(onDone, bookId, "DELETE")
     }
 
-    var $formAdd = $("#contact_form");
-    $formAdd.on('click', '#submit', function (event) {
+    $form.on('click', '#submit', function (event) {
         event.preventDefault();
 
         function onDone() {
